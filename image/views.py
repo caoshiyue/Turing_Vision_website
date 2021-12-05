@@ -1,33 +1,40 @@
 from os import name
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse, StreamingHttpResponse
 from image.models import *
-
+from image.leaderboard import read_leaderboard_file, generate_leaderboard_tofile
 # Create your views here.
 
 
 def home(request):
-    photos = Photo.objects.all()
-    context = {'photos': photos}
+    context = {}
     return render(request, 'index.html', context)
 
 
 def tutor(request):
-    photos = Photo.objects.all()
-    context = {'photos': photos}
+    context = {}
     return render(request, 'tutorial.html', context)
 
 
 def trainpart(request):
-    photos = Photo.objects.all()
-    context = {'photos': photos}
+    context = {}
     return render(request, 'train.html', context)
 
 
 def testpart(request):
-    photos = Photo.objects.all()
-    context = {'photos': photos}
+    context = {}
     return render(request, 'test.html', context)
+
+
+def leaderboard(request):
+    generate_leaderboard_tofile()
+    context = read_leaderboard_file()
+    return render(request, 'leaderboard.html', context)
+
+
+def contact(request):
+    context = {}
+    return render(request, 'contact.html', context)
 
 
 def get(request):
@@ -61,3 +68,25 @@ def save_anno(request):
     data = json.loads(request.body)
     do_save_anno(data)
     return HttpResponse('Success', content_type="application/json")
+
+
+def download(request):
+    try:
+        file = 'static/test_data/test.zip'
+        response = StreamingHttpResponse(file_iterator(file))
+        response['Content-Type'] = 'application/octet-stream'
+        response['Content-Disposition'] = 'attachment;filename="main.zip"'
+        print(response)
+    except:
+        print("cannot read")
+    return response
+
+
+def file_iterator(filename, chunk_size=512):
+    with open(filename, 'rb') as f:
+        while True:
+            c = f.read(chunk_size)
+            if c:
+                yield c
+            else:
+                break

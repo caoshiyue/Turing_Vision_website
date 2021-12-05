@@ -1,0 +1,1 @@
+[{"height": 427, "width": 640, "image_id": 3553, "dataset": "coco", "annotations": [{"category_id": 1, "category_name": "person", "category_name_cn": "人", "bbox": [153.26, 0.72, 266.99, 307.48]}, {"category_id": 41, "category_name": "skateboard", "category_name_cn": "滑板", "bbox": [186.69, 262.44, 180.95, 109.14]}], "file_name": "000000003553.jpg"}]

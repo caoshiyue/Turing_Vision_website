@@ -1,0 +1,1 @@
+[{"height": 640, "width": 287, "image_id": 342971, "dataset": "coco", "annotations": [{"category_id": 34, "category_name": "frisbee", "category_name_cn": "飞盘", "bbox": [110.69, 143.37, 104.08, 16.93]}, {"category_id": 1, "category_name": "person", "category_name_cn": "人", "bbox": [27.85, 123.85, 205.6, 506.69]}], "file_name": "000000342971.jpg"}]

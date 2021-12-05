@@ -1,0 +1,1 @@
+[{"height": 640, "width": 426, "image_id": 415748, "dataset": "coco", "annotations": [{"category_id": 1, "category_name": "person", "category_name_cn": "人", "bbox": [128.81, 160.82, 68.04, 63.89]}, {"category_id": 22, "category_name": "elephant", "category_name_cn": "象", "bbox": [34.08, 280.87, 266.08, 334.87]}], "file_name": "000000415748.jpg"}]

@@ -1,0 +1,1 @@
+[{"height": 500, "width": 375, "image_id": 153217, "dataset": "coco", "annotations": [{"category_id": 17, "category_name": "cat", "category_name_cn": "猫", "bbox": [17.2, 315.05, 143.02, 174.2]}, {"category_id": 4, "category_name": "motorcycle", "category_name_cn": "摩托车", "bbox": [40.45, 2.06, 334.55, 416.85]}], "file_name": "000000153217.jpg"}]

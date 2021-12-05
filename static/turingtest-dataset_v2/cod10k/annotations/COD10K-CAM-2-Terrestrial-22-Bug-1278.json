@@ -1,0 +1,1 @@
+[{"height": 592, "width": 1024, "image_id": 497, "dataset": "cod10k", "annotations": [{"category_id": 22, "category_name": "bug", "category_name_cn": "昆虫", "bbox": [193.0, 162.0, 375.0, 204.0]}], "file_name": "COD10K-CAM-2-Terrestrial-22-Bug-1278.jpg"}]

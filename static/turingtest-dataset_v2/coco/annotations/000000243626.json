@@ -1,0 +1,1 @@
+[{"height": 289, "width": 385, "image_id": 243626, "dataset": "coco", "annotations": [{"category_id": 47, "category_name": "cup", "category_name_cn": "杯子", "bbox": [68.06, 0.63, 78.12, 53.75]}, {"category_id": 48, "category_name": "fork", "category_name_cn": "叉子", "bbox": [295.51, 45.24, 77.46, 182.9]}], "file_name": "000000243626.jpg"}]

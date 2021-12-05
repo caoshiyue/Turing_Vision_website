@@ -1,0 +1,1 @@
+[{"height": 766, "width": 1024, "image_id": 133, "dataset": "cod10k", "annotations": [{"category_id": 9, "category_name": "ghostPipefish", "category_name_cn": "剃刀鱼", "bbox": [346.0, 88.0, 321.0, 581.0]}], "file_name": "COD10K-CAM-1-Aquatic-9-GhostPipefish-334.jpg"}]

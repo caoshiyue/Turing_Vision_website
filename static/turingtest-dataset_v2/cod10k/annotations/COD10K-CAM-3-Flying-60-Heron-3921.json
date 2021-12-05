@@ -1,0 +1,1 @@
+[{"height": 463, "width": 1024, "image_id": 1570, "dataset": "cod10k", "annotations": [{"category_id": 60, "category_name": "heron", "category_name_cn": "苍鹭", "bbox": [423.0, 283.0, 105.0, 137.0]}], "file_name": "COD10K-CAM-3-Flying-60-Heron-3921.jpg"}]

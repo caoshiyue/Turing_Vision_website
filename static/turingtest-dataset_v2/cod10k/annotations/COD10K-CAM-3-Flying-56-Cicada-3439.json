@@ -1,0 +1,1 @@
+[{"height": 400, "width": 620, "image_id": 1361, "dataset": "cod10k", "annotations": [{"category_id": 56, "category_name": "cicada", "category_name_cn": "蝉", "bbox": [339.0, 63.0, 168.0, 308.0]}], "file_name": "COD10K-CAM-3-Flying-56-Cicada-3439.jpg"}]

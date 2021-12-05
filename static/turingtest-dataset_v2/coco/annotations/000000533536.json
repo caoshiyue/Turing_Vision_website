@@ -1,0 +1,1 @@
+[{"height": 480, "width": 640, "image_id": 533536, "dataset": "coco", "annotations": [{"category_id": 72, "category_name": "tv", "category_name_cn": "电视", "bbox": [111.93, 0.65, 528.07, 446.63]}, {"category_id": 17, "category_name": "cat", "category_name_cn": "猫", "bbox": [89.92, 282.1, 311.33, 197.9]}], "file_name": "000000533536.jpg"}]

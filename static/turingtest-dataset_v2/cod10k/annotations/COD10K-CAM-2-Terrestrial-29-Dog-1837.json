@@ -1,0 +1,1 @@
+[{"height": 768, "width": 1024, "image_id": 732, "dataset": "cod10k", "annotations": [{"category_id": 29, "category_name": "dog", "category_name_cn": "狗", "bbox": [333.0, 344.0, 210.0, 248.0]}], "file_name": "COD10K-CAM-2-Terrestrial-29-Dog-1837.jpg"}]

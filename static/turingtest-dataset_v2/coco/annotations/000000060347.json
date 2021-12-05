@@ -1,0 +1,1 @@
+[{"height": 640, "width": 480, "image_id": 60347, "dataset": "coco", "annotations": [{"category_id": 1, "category_name": "person", "category_name_cn": "人", "bbox": [102.34, 234.95, 262.34, 360.37]}, {"category_id": 15, "category_name": "bench", "category_name_cn": "长凳", "bbox": [135.41, 290.18, 318.94, 262.46]}], "file_name": "000000060347.jpg"}]

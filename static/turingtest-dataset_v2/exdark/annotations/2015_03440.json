@@ -1,0 +1,1 @@
+[{"height": 675, "width": 900, "image_id": 0, "dataset": "exdark", "annotations": [{"category_id": 6, "category_name": "Cat", "category_name_cn": "猫", "bbox": [170, 80, 173, 418]}, {"category_id": 12, "category_name": "Table", "category_name_cn": "桌子", "bbox": [8, 311, 105, 165]}], "file_name": "2015_03440.jpg"}]

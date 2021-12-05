@@ -1,0 +1,1 @@
+[{"height": 640, "width": 423, "image_id": 112626, "dataset": "coco", "annotations": [{"category_id": 63, "category_name": "couch", "category_name_cn": "长椅", "bbox": [267.24, 173.14, 155.76, 298.75]}, {"category_id": 33, "category_name": "suitcase", "category_name_cn": "手提箱", "bbox": [115.06, 184.09, 232.98, 385.44]}], "file_name": "000000112626.jpg"}]

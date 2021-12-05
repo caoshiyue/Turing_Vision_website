@@ -1,0 +1,1 @@
+[{"height": 756, "width": 1024, "image_id": 65, "dataset": "cod10k", "annotations": [{"category_id": 6, "category_name": "fish", "category_name_cn": "鱼", "bbox": [163.0, 118.0, 428.0, 496.0]}], "file_name": "COD10K-CAM-1-Aquatic-6-Fish-174.jpg"}]

@@ -1,0 +1,1 @@
+[{"height": 375, "width": 500, "image_id": 0, "dataset": "exdark", "annotations": [{"category_id": 8, "category_name": "Cup", "category_name_cn": "杯子", "bbox": [136, 32, 207, 311]}, {"category_id": 8, "category_name": "Cup", "category_name_cn": "杯子", "bbox": [357, 3, 122, 163]}], "file_name": "2015_04846.JPEG"}]

@@ -32,17 +32,6 @@ annotation = read_anno()
 save_path = 'static/save'
 
 
-class Photo(models.Model):
-    image = models.ImageField(upload_to='photo/%Y%m%d/')
-    created = models.DateTimeField(default=now)
-
-    def __str__(self):
-        return self.image.name
-
-    class Meta:
-        ordering = ('-created',)
-
-
 def get_hash(user, times):
     return (hash(user)+times) % num_datalist
 

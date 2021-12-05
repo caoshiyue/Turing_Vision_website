@@ -1,0 +1,1 @@
+[{"height": 651, "width": 1024, "image_id": 1828, "dataset": "cod10k", "annotations": [{"category_id": 65, "category_name": "owl", "category_name_cn": "猫头鹰", "bbox": [329.0, 338.0, 135.0, 201.0]}, {"category_id": 65, "category_name": "owl", "category_name_cn": "猫头鹰", "bbox": [463.0, 366.0, 131.0, 182.0]}], "file_name": "COD10K-CAM-3-Flying-65-Owl-4537.jpg"}]

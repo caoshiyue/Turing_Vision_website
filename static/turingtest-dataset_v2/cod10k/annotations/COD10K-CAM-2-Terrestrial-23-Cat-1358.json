@@ -1,0 +1,1 @@
+[{"height": 740, "width": 1024, "image_id": 525, "dataset": "cod10k", "annotations": [{"category_id": 23, "category_name": "cat", "category_name_cn": "猫", "bbox": [533.0, 253.0, 316.0, 487.0]}], "file_name": "COD10K-CAM-2-Terrestrial-23-Cat-1358.jpg"}]

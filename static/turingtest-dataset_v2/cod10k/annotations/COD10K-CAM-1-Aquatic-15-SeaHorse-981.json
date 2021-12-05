@@ -1,0 +1,1 @@
+[{"height": 419, "width": 1023, "image_id": 391, "dataset": "cod10k", "annotations": [{"category_id": 15, "category_name": "seaHorse", "category_name_cn": "海马", "bbox": [338.0, 160.0, 93.0, 198.0]}, {"category_id": 15, "category_name": "seaHorse", "category_name_cn": "海马", "bbox": [489.0, 118.0, 128.0, 89.0]}], "file_name": "COD10K-CAM-1-Aquatic-15-SeaHorse-981.jpg"}]
