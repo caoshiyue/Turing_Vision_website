@@ -1,1 +1,0 @@
-[{"height": 300, "width": 400, "image_id": 312552, "dataset": "coco", "annotations": [{"category_id": 59, "category_name": "pizza", "category_name_cn": "比萨", "bbox": [165.86, 129.96, 41.55, 31.87]}, {"category_id": 1, "category_name": "person", "category_name_cn": "人", "bbox": [110.85, 47.36, 288.37, 248.06]}], "file_name": "000000312552.jpg"}]

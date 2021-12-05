@@ -1,1 +1,0 @@
-[{"height": 500, "width": 333, "image_id": 474095, "dataset": "coco", "annotations": [{"category_id": 1, "category_name": "person", "category_name_cn": "人", "bbox": [56.18, 24.72, 221.35, 469.66]}, {"category_id": 70, "category_name": "toilet", "category_name_cn": "马桶", "bbox": [136.91, 362.16, 30.75, 75.69]}], "file_name": "000000474095.jpg"}]

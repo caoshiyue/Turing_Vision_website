@@ -1,1 +1,0 @@
-[{"height": 768, "width": 1024, "image_id": 1101, "dataset": "cod10k", "annotations": [{"category_id": 45, "category_name": "spider", "category_name_cn": "蜘蛛", "bbox": [349.0, 156.0, 521.0, 537.0]}], "file_name": "COD10K-CAM-2-Terrestrial-45-Spider-2794.jpg"}]

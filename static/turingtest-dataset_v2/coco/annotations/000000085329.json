@@ -1,1 +1,0 @@
-[{"height": 449, "width": 640, "image_id": 85329, "dataset": "coco", "annotations": [{"category_id": 1, "category_name": "person", "category_name_cn": "人", "bbox": [252.82, 36.41, 345.85, 374.16]}, {"category_id": 32, "category_name": "tie", "category_name_cn": "领带", "bbox": [360.38, 280.14, 86.55, 128.46]}], "file_name": "000000085329.jpg"}]

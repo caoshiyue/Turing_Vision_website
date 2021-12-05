@@ -1,1 +1,0 @@
-[{"height": 641, "width": 1024, "image_id": 0, "dataset": "exdark", "annotations": [{"category_id": 5, "category_name": "Car", "category_name_cn": "汽车", "bbox": [622, 343, 110, 108]}, {"category_id": 11, "category_name": "People", "category_name_cn": "人", "bbox": [577, 396, 22, 44]}], "file_name": "2015_02977.jpg"}]

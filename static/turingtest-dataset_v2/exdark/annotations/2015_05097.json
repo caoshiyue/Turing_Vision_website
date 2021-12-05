@@ -1,1 +1,0 @@
-[{"height": 1024, "width": 768, "image_id": 0, "dataset": "exdark", "annotations": [{"category_id": 9, "category_name": "Dog", "category_name_cn": "狗", "bbox": [268, 543, 295, 370]}, {"category_id": 11, "category_name": "People", "category_name_cn": "人", "bbox": [139, 125, 337, 695]}], "file_name": "2015_05097.jpg"}]

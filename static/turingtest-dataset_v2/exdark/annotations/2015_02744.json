@@ -1,1 +1,0 @@
-[{"height": 640, "width": 480, "image_id": 0, "dataset": "exdark", "annotations": [{"category_id": 5, "category_name": "Car", "category_name_cn": "汽车", "bbox": [281, 253, 189, 135]}, {"category_id": 5, "category_name": "Car", "category_name_cn": "汽车", "bbox": [44, 317, 261, 150]}], "file_name": "2015_02744.jpg"}]

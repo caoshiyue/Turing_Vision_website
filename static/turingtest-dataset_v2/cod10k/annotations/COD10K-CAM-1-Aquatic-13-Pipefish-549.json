@@ -1,1 +1,0 @@
-[{"height": 719, "width": 960, "image_id": 227, "dataset": "cod10k", "annotations": [{"category_id": 13, "category_name": "pipefish", "category_name_cn": "尖嘴鱼", "bbox": [143.0, 166.0, 692.0, 359.0]}, {"category_id": 13, "category_name": "pipefish", "category_name_cn": "尖嘴鱼", "bbox": [47.0, 88.0, 724.0, 513.0]}], "file_name": "COD10K-CAM-1-Aquatic-13-Pipefish-549.jpg"}]

@@ -1,1 +1,0 @@
-[{"height": 3264, "width": 2448, "image_id": 0, "dataset": "exdark", "annotations": [{"category_id": 12, "category_name": "Table", "category_name_cn": "桌子", "bbox": [110, 654, 2245, 2212]}, {"category_id": 7, "category_name": "Chair", "category_name_cn": "椅子", "bbox": [1569, 547, 857, 1045]}], "file_name": "2015_07179.JPG"}]

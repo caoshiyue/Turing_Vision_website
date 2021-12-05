@@ -1,1 +1,0 @@
-[{"height": 640, "width": 480, "image_id": 495448, "dataset": "coco", "annotations": [{"category_id": 61, "category_name": "cake", "category_name_cn": "蛋糕", "bbox": [40.67, 15.57, 320.98, 523.92]}, {"category_id": 49, "category_name": "knife", "category_name_cn": "刀", "bbox": [345.52, 522.06, 29.65, 117.94]}], "file_name": "000000495448.jpg"}]
