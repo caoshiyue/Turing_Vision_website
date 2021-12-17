@@ -1,8 +1,11 @@
 from os import name
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, FileResponse, StreamingHttpResponse
 from image.models import *
 from image.leaderboard import read_leaderboard_file, generate_leaderboard_tofile
+from image.user import *
+import hashlib
+from django.utils import timezone
 # Create your views here.
 
 
@@ -35,6 +38,16 @@ def leaderboard(request):
 def contact(request):
     context = {}
     return render(request, 'contact.html', context)
+
+
+def login(request):
+    context = {'message': ''}
+    return render(request, 'auth/login.html', context)
+
+
+def register(request):
+    context = {'message': ''}
+    return render(request, 'auth/register.html', context)
 
 
 def get(request):
@@ -90,3 +103,72 @@ def file_iterator(filename, chunk_size=512):
                 yield c
             else:
                 break
+
+#todo: 保持登录
+
+
+def login_request(request):
+    if request.method == "POST":
+        form = login_form(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            message = ''
+            try:
+                user = Users.objects.get(email=email)
+                if user.password_hash == password:
+                    #TODO: 用户页面
+                    return redirect('/login/')
+                else:
+                    message = "密码不正确"
+            except:
+                message = "用户不存在"
+        return render(request, 'auth/login.html', locals())
+
+    form = login_form()
+    return render(request, 'auth/login.html', locals())
+
+# TODO: 注册,发邮件
+
+
+def register_request(request):
+    if request.method == "POST":
+        form = register_form(request.POST)
+        if form.is_valid():
+            usr = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            message = ''
+            try:
+                Users.objects.get(email=email)
+                Users.objects.get(username=usr)
+                message = "用户名或邮箱已注册"
+            except:
+                message = ""
+                Users.objects.create(
+                    username=usr, email=email, password_hash=password, confirmed=False, registration_time=str(timezone.now()), last_seen=str(timezone.now()))
+                send_email(usr, email)
+
+        return render(request, 'auth/register.html', locals())
+
+    form = register_form()
+    return render(request, 'auth/register.html', locals())
+
+
+def register_confirm(request):
+    username = request.GET.get('user')
+    token = request.GET.get('token')
+    message = ''
+    try:
+        usr = Users.objects.get(username=username)
+        m = hashlib.md5(usr.email.encode())
+        p = m.hexdigest()
+        if p == token:
+            usr.confirmed = 1
+            usr.save()
+            message = '验证成功'
+        else:
+            message = '验证失败'
+    except:
+        message = "验证失败"
+    return render(request, 'auth/confirm_result.html', locals())

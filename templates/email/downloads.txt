@@ -1,0 +1,13 @@
+
+
+Links to download {{ filename }} (choose the link that works best for you):
+
+- Baiduyun Disk: {{ baidu_url }}
+
+The extraction code is cube.
+
+- OneDrive: {{ onedrive_url }}
+
+Please note the license conditions of this dataset!
+
+The VideoCube Team, CASIA

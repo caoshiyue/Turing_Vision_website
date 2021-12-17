@@ -1,0 +1,13 @@
+Dear $usr,
+
+Welcome to VisionTuring test platform! VisionTuring focuses on evaluating the intelligence of a machine against the human visual ability.
+
+To confirm your account please click on the following link:
+
+$link
+
+Sincerely,
+
+The VisionTuring Team, CASIA
+
+Note: replies to this email address are not monitored.

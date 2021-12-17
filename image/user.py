@@ -2,13 +2,17 @@
 # Author:
 # Description:
 # LastEditors: Shiyuec
-# LastEditTime: 2021-12-02 21:15:04
+# LastEditTime: 2021-12-17 22:08:17
 ##
 from django.db import models
 # Create your models here.
 from django.utils.timezone import now
-import os
-import json
+import turingvision.settings
+from django import forms
+from django.core.mail import send_mass_mail
+from django.conf import settings as settings
+from django.core.mail import EmailMultiAlternatives
+import hashlib
 
 
 class AlembicVersion(models.Model):
@@ -32,7 +36,7 @@ class Downloads(models.Model):
 
 class Submissions(models.Model):
     id = models.AutoField(primary_key=True)
-    human=models.BooleanField()
+    human = models.BooleanField()
     modelname = models.CharField(blank=True, null=True, max_length=16)
     description = models.CharField(blank=True, null=True, max_length=256)
     ap = models.FloatField(blank=True, null=True)
@@ -61,13 +65,41 @@ class Users(models.Model):
         unique=True, blank=True, null=True, max_length=64)
     password_hash = models.CharField(blank=True, null=True, max_length=128)
     confirmed = models.BooleanField(blank=True, null=True)
-    firstname = models.CharField(blank=True, null=True, max_length=64)
-    lastname = models.CharField(blank=True, null=True, max_length=64)
-    url = models.CharField(blank=True, null=True, max_length=256)
-    affiliation = models.CharField(blank=True, null=True, max_length=64)
     registration_time = models.DateTimeField(blank=True, null=True)
     last_seen = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'users'
+
+
+class login_form(forms.Form):
+    email = forms.CharField(label="email", max_length=64)
+    password = forms.CharField(
+        label="password", max_length=256, widget=forms.PasswordInput)
+
+
+class register_form(forms.Form):
+    username = forms.CharField(label="email", max_length=64)
+    email = forms.CharField(label="email", max_length=64)
+    password = forms.CharField(
+        label="password", max_length=256, widget=forms.PasswordInput)
+
+
+def send_email(usr, email):
+    subject = 'TuringVision register confirm'
+    with open('static/email/confirm.txt', 'r') as f:
+        text_content = f.read()
+    with open('static/email/confirm.html', 'r') as f:
+        html_content = f.read()
+    text_content = text_content.replace('$usr', usr)
+    html_content = html_content.replace('$usr', usr)
+    m = hashlib.md5(email.encode())
+    link = settings.HOST+'/register_confirm/?user='+usr+'&token='+m.hexdigest()
+    text_content = text_content.replace('$link', link)
+    html_content = html_content.replace('$link', link)
+    msg = EmailMultiAlternatives(
+        subject, text_content, 'TuringVision <turingvision@163.com>', [email])
+
+    msg.attach_alternative(html_content, "text/html")
+    msg.send()

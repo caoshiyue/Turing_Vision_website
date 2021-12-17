@@ -1,0 +1,112 @@
+@media (max-width: 10000px) {
+    .head-h2 {
+        font-size: 27px;
+        font-weight: 300;
+        color: #444444;
+        letter-spacing: 0.5px;
+        margin-top: 1.7rem;
+    }
+    .head-h3 {
+        font-size: 24px;
+        font-weight: 300;
+        color: #333333;
+        letter-spacing: 0.5px;
+    }
+    .head-h4 {
+        font-size: 21px;
+        font-weight: 300;
+        color: #333333;
+        letter-spacing: 0.5px;
+    }
+    .plain-text {
+        color: #777777;
+    }
+    .plain-link {
+        text-decoration: underline;
+    }
+    .plain-link:hover {
+        text-decoration: none;
+    }
+    table {
+        margin-top: 1.5rem;
+        font-size: 13px;
+        width: 97%;
+    }
+}
+@media (max-width: 1000px) {
+    .head-h2 {
+        font-size: 27px;
+        font-weight: 300;
+        color: #444444;
+        letter-spacing: 0.5px;
+        margin-top: 1.7rem;
+    }
+    .head-h3 {
+        font-size: 24px;
+        font-weight: 300;
+        color: #333333;
+        letter-spacing: 0.5px;
+    }
+    .head-h4 {
+        font-size: 21px;
+        font-weight: 300;
+        color: #333333;
+        letter-spacing: 0.5px;
+    }
+    .plain-text {
+        color: #777777;
+    }
+    .plain-link {
+        text-decoration: underline;
+    }
+    .plain-link:hover {
+        text-decoration: none;
+    }
+}
+@media (max-width: 700px) {
+    .head-h2 {
+        font-size: 21px;
+        font-weight: 300;
+        color: #444444;
+        letter-spacing: 0.5px;
+        margin-top: 1.7rem;
+    }
+    .head-h3 {
+        font-size: 19px;
+        font-weight: 300;
+        color: #333333;
+        letter-spacing: 0.5px;
+    }
+    .head-h4 {
+        font-size: 16px;
+        font-weight: 300;
+        color: #333333;
+        letter-spacing: 0.5px;
+    }
+    .plain-text {
+        font-size: 14px;
+        color: #777777;
+    }
+    .plain-link {
+        font-size: 14px;
+        text-decoration: underline;
+    }
+    .plain-link:hover {
+        text-decoration: none;
+    }
+    .display-5 {
+        font-size: 1.6rem;
+    }
+    .jumbotron p {
+        font-size: 14px;
+    }
+    ul, ol {
+        font-size: 14px;
+    }
+    table {
+        font-size: 8px;
+    }
+    table .plain-link {
+        font-size: 8px;
+    }
+}
