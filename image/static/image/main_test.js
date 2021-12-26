@@ -1,14 +1,14 @@
-$(document).ready(function ($) {
-    // var hostip = 'http://127.0.0.1:8000'
+$(document).ready(function($) {
+    //var hostip = 'http://127.0.0.1:8000'
     var hostip = 'http://visionturing.shiyuec.cn' //上线修改
-    //-------------------------------------------------------------
-    // 
-    // Plugin
-    //http://jsfiddle.net/h8vnw/
-    //-------------------------------------------------------------
+        //-------------------------------------------------------------
+        // 
+        // Plugin
+        //http://jsfiddle.net/h8vnw/
+        //-------------------------------------------------------------
     $.widget("ui.boxer", $.extend({}, $.ui.mouse, {
 
-        _init: function () {
+        _init: function() {
             this.element.addClass("ui-boxer");
 
             this.dragged = false;
@@ -22,7 +22,7 @@ $(document).ready(function ($) {
                 .addClass("ui-boxer-helper");
         },
 
-        destroy: function () {
+        destroy: function() {
             this.element
                 .removeClass("ui-boxer ui-boxer-disabled")
                 .removeData("boxer")
@@ -32,7 +32,7 @@ $(document).ready(function ($) {
             return this;
         },
 
-        _mouseStart: function (event) {
+        _mouseStart: function(event) {
             var self = this;
             var offsetCanvas = $("#output").offset();
             var cWidth = $("#output").width() + offsetCanvas.left;
@@ -61,7 +61,7 @@ $(document).ready(function ($) {
             });
         },
 
-        _mouseDrag: function (event) {
+        _mouseDrag: function(event) {
             var self = this;
             this.dragged = true;
 
@@ -125,7 +125,7 @@ $(document).ready(function ($) {
             return false;
         },
 
-        _mouseStop: function (event) {
+        _mouseStop: function(event) {
             var self = this;
 
             this.dragged = false;
@@ -218,9 +218,9 @@ $(document).ready(function ($) {
         result += keys.join(columnDelimiter);
         result += lineDelimiter;
 
-        data.forEach(function (item) {
+        data.forEach(function(item) {
             ctr = 0;
-            keys.forEach(function (key) {
+            keys.forEach(function(key) {
                 if (ctr > 0) result += columnDelimiter;
 
                 result += item[key];
@@ -269,7 +269,7 @@ $(document).ready(function ($) {
         var json_obj = new Object();
         json_obj.image_path = json_image.name;
         json_obj.category = parseInt(json_image.label)
-        json_obj.usr = rater
+            //json_obj.usr = rater
         json_obj.times_of_test = times_of_test
         json_obj.width = $('#output').width();
         json_obj.height = $('#output').height();
@@ -292,7 +292,7 @@ $(document).ready(function ($) {
         httpRequest.setRequestHeader("Content-type", "application/json"); //设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）var obj = { name: 'zhansgan', age: 18 };
         httpRequest.send(JSON.stringify(json_obj)); //发送请求 将json写入send中
 
-        httpRequest.onreadystatechange = function () { //请求后的回调接口，可将请求成功后要执行的程序写在其中
+        httpRequest.onreadystatechange = function() { //请求后的回调接口，可将请求成功后要执行的程序写在其中
             if (httpRequest.readyState == 4 && httpRequest.status == 200) { //验证请求是否发送成功
             }
         };
@@ -315,7 +315,6 @@ $(document).ready(function ($) {
 
     var debug = true;
 
-    var rater = debug ? 'debug' : window.prompt("Username:", " ");
     var times_of_test = 0
     var imgN = -1;
 
@@ -334,7 +333,7 @@ $(document).ready(function ($) {
 
     $('.modal').modal('show');
 
-    $('#file-input').change(function (files) {
+    $('#file-input').change(function(files) {
         reset();
         imgN = 0;
         nextImg(imgN);
@@ -353,10 +352,10 @@ $(document).ready(function ($) {
 
     function get_num_image(r, p) {
         var httpRequest = new XMLHttpRequest(); //第一步：建立所需的对象
-        msg = 'user=' + r + '&p=' + p
+        msg = 'p=' + p
         httpRequest.open('GET', hostip + '/number/?' + msg, true);
         httpRequest.send();
-        httpRequest.onreadystatechange = function () {
+        httpRequest.onreadystatechange = function() {
             if (httpRequest.readyState == 4 && httpRequest.status == 200) {
                 var json = httpRequest.responseText;
                 imList_lenth = parseInt(json)
@@ -365,18 +364,13 @@ $(document).ready(function ($) {
         };
     }
 
-    $('#start-button').click(function () {
+    window.onload = function() {
         setProgressBar(0);
         boxMode = true;
         console.log(boxMode)
-        rater = $('#name').val();
-        if (rater == '') {
-            alert("请填写姓名")
-            return false
-        }
 
-        times_of_test = checkradio()
-        get_num_image(rater, times_of_test)
+        times_of_test = 1 //checkradio()
+        get_num_image(undefined, times_of_test)
 
         console.log("collected data");
         $('.modal').modal("hide");
@@ -390,7 +384,7 @@ $(document).ready(function ($) {
 
             // Using the boxer plugin
             $('#canvas').boxer({
-                stop: function (event, ui) {
+                stop: function(event, ui) {
 
                     var offset = ui.box.offset();
                     var offset1 = $("#canvas").offset();
@@ -426,7 +420,7 @@ $(document).ready(function ($) {
             });
         } else {
             console.log("spotty version")
-            $('#output').bind('click', function (ev) {
+            $('#output').bind('click', function(ev) {
                 var $div = $(ev.target);
                 console.log($div)
                 var offset1 = $div.offset();
@@ -440,42 +434,42 @@ $(document).ready(function ($) {
             });
         }
         return false
-    });
+    };
 
     // $('#nextButton').click(function () {
-    document.getElementById("nextButton").onclick = function () {
-        is_instruction_img = false
-        collectPictureAnnotations();
-        if (imgN + 1 >= imList_lenth) {
-            alert("你已经完成了测试")
-            return
-        }
-
-        var httpRequest = new XMLHttpRequest(); //第一步：建立所需的对象
-        //p=[0,1,2]
-        msg = 'user=' + rater + '&imgid=' + (imgN + 1).toString() + '&p=' + times_of_test
-        httpRequest.open('GET', hostip + '/next/?' + msg, true);
-        httpRequest.send(); //第三步：发送请求  将请求参数写在URL中
-        /**
-         * 获取数据后的处理程序
-         */
-        httpRequest.onreadystatechange = function () {
-            if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-                imgN = imgN + 1;
-                setProgressBar(imgN);
-                var json = httpRequest.responseText; //获取到json字符串，还需解析
-                console.log(json);
-                json_image = jQuery.parseJSON(json);
-                class_name = json_image.label.category_name_cn;
-                nextImg(imgN, json_image.image_base64_string, class_name);
-                reset();
-                var delete_btn = document.getElementById("delLast")
-                delete_btn.style['display'] = 'none'
+    document.getElementById("nextButton").onclick = function() {
+            is_instruction_img = false
+            collectPictureAnnotations();
+            if (imgN + 1 >= imList_lenth) {
+                alert("你已经完成了测试")
+                return
             }
-        };
 
-    }
-    // );
+            var httpRequest = new XMLHttpRequest(); //第一步：建立所需的对象
+            //p=[0,1,2]
+            msg = 'imgid=' + (imgN + 1).toString() + '&p=' + times_of_test
+            httpRequest.open('GET', hostip + '/next/?' + msg, true);
+            httpRequest.send(); //第三步：发送请求  将请求参数写在URL中
+            /**
+             * 获取数据后的处理程序
+             */
+            httpRequest.onreadystatechange = function() {
+                if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                    imgN = imgN + 1;
+                    setProgressBar(imgN);
+                    var json = httpRequest.responseText; //获取到json字符串，还需解析
+                    console.log(json);
+                    json_image = jQuery.parseJSON(json);
+                    class_name = json_image.label.category_name_cn;
+                    nextImg(imgN, json_image.image_base64_string, class_name);
+                    reset();
+                    var delete_btn = document.getElementById("delLast")
+                    delete_btn.style['display'] = 'none'
+                }
+            };
+
+        }
+        // );
 
     /*window.onbeforeunload = function(e) {
         var dialogText = 'Dialog text here';
@@ -483,7 +477,7 @@ $(document).ready(function ($) {
         return dialogText;
     };*/
 
-    $("#delLast").click(function () {
+    $("#delLast").click(function() {
         if (markN >= 2) {
             removeMarker(markN, cListX, cListY, cListW, cListH);
             markN = markN - 1;

@@ -1,5 +1,10 @@
+##
+# Author:
+# Description:
+# LastEditors: Shiyuec
+# LastEditTime: 2021-12-26 19:49:38
+##
 from os import name
-from django.http.response import HttpResponseBadRequest
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, FileResponse, StreamingHttpResponse
 from image.models import *
@@ -11,7 +16,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login as login_keep
 from django.contrib.auth import logout as logout_keep
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse
 
 # Create your views here.
 
@@ -49,11 +53,14 @@ def contact(request):
     return render(request, 'contact.html', context)
 
 
-def login(request, message='', next=''):
-    if next == '':
-        next = request.GET.get('next')
-    context = {'message': message, 'next_url': next}
-    return render(request, 'auth/login.html', context)
+def login(request):
+    action = request.GET.get('action')
+    if action == 'login_request/':
+        return login_request(request)
+    else:
+        next_url = request.GET.get('next')
+        context = {'message': '', 'next_url': next_url}
+        return render(request, 'auth/login.html', context)
 
 
 @login_required
@@ -72,14 +79,6 @@ def register(request):
 def user_account(request):
     user = request.user
     subm = user.submissions_set.all()
-    for s in subm:
-        s.ap = round(s.ap, 4)
-        s.ap50 = round(s.ap50, 4)
-        s.ap75 = round(s.ap75, 4)
-        s.aps = round(s.aps, 4)
-        s.apm = round(s.apm, 4)
-        s.apl = round(s.apl, 4)
-        s.timestamp = s.timestamp.date()
     context = {'submission': subm}
     return render(request, 'auth/user_account.html', context)
 
@@ -146,9 +145,7 @@ def login_request(request):
     if request.method == "POST":
         form = login_form(request.POST)
         message = ''
-        next_url = request.POST.get('next_url')
-        if next_url == 'None' or next_url == '' or next_url == '{{':
-            next_url = '/user_account'
+        next_url = 'None'
         if form.is_valid():
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
@@ -160,9 +157,15 @@ def login_request(request):
                 message = "邮箱未验证"
             else:
                 login_keep(request, user)
-                return redirect(next_url)
-    #! 这里用传参
-    return redirect(reverse('login', kwargs={"message": message, 'next': next_url}))
+                next_url = request.POST.get('next_url')
+                if next_url == 'None' or next_url == '' or next_url == '{{':
+                    #todo: 用户界面
+                    return redirect('/user_account')
+                else:
+                    return redirect(next_url)
+
+    form = login_form()
+    return render(request, 'auth/login.html', {'message': message})
 
 # TODO: 注册,发邮件
 
@@ -175,19 +178,21 @@ def register_request(request):
             usr = form.cleaned_data['username']
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-            a = User.objects.filter(email=email)
-            b = User.objects.filter(username=usr)
-            if a.count() != 0 or b.count() != 0:
+            try:
+                User.objects.get(email=email)
+                User.objects.get(username=usr)
                 message = "用户名或邮箱已注册"
-            else:
-                message = "已发送确认邮件，请查收(包括垃圾邮件)"
+            except:
+                message = ""
                 # password 再次hash
                 User.objects.create_user(username=usr, email=email, password=password, is_active=False, date_joined=str(
                     timezone.now()), last_login=str(timezone.now()))
                 send_email(usr, email)
 
-        return HttpResponse(message, status=200)
-    return HttpResponseBadRequest()
+        return render(request, 'auth/register.html', locals())
+
+    form = register_form()
+    return render(request, 'auth/register.html', locals())
 
 
 def register_confirm(request):

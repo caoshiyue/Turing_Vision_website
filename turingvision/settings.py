@@ -174,3 +174,10 @@ EMAIL_PORT = 465
 EMAIL_HOST_USER = 'turingvision@163.com'  # 帐号
 EMAIL_HOST_PASSWORD = 'NXPXVLJSEHCMCIPY'  # 密码
 DEFAULT_FROM_EMAIL = 'TuringVision <turingvision@163.com>'
+
+#! 登录界面
+LOGIN_URL = '/login'
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.AllowAllUsersModelBackend']
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_COOKIE_AGE = 30*60  # 上线修改

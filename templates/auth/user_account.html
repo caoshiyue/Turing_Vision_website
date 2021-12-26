@@ -1,3 +1,9 @@
+<!--
+ * @Author:  
+ * @Description:  
+ * @LastEditors: Shiyuec
+ * @LastEditTime: 2021-12-26 15:15:53
+-->
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -101,7 +107,7 @@
                 <div class="row align-items-center">
                     <div class="col-xl-5 col-lg-6 col-md-6">
                         <div class="hero-caption hero-caption2">
-                            <h2 style="font-size: 48px;">检测图灵测试排行榜</h2>
+                            <h2 style="font-size: 48px;">Account <i>{{request.user.username}}</i></h2>
                             <p></p>
                         </div>
                     </div>
@@ -112,31 +118,14 @@
     <section class="sample-text-areas top-padding" style="    padding-top: 40px;">
 
         <div class="container">
-            <h4 class="head-h4" style="margin-top:1.5rem">
-                排名规则:
-            </h4>
-            <ul style="color:#777777">
-                <li>
-                    排行榜将依据 <a href="https://cocodataset.org/#detection-eval">AP</a>分数，展示前100名完成在线测试的人类结果和通过提交标注文件的机器结果。
-                </li>
-            </ul>
-            <li style="padding-top: 20px;">
-                <a href="javascript:;">点这里提交标注文件</a>
-            </li>
-            <h4 class="head-h4" style="margin-top:1.5rem">
-                现有参与总数:
-            </h4>
-            <ul style="color:#777777">
-                <li>
-                    <b>{{ human_num }}</b> 人类测试者
-                </li>
-                <li>
-                    <b>{{ machine_num }}</b> 机器测试者
-                </li>
-                <li>
-                    <b>{{ all_num }}</b> 次提交
-                </li>
-            </ul>
+            <h2 class="head-h2">
+                Submissions
+            </h2>
+            {% if submission | length == 0 %}
+            <p class="plain-text">
+                You haven't created any entries yet.
+            </p>
+            {% else %}
             <table class="table table-striped">
                 <thead class="thread-dark">
                     <tr>
@@ -153,32 +142,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for i,r in df.iterrows() %}
+                    {% for r in submission %}
                     <tr>
                         <td>{{ loop.index }}</td>
-                        {% if r['human'] %}
+                        {% if r.human%}
                         <td>human</td>
                         {% else %}
                         <td>machine</td>
-                        {% endif %} {% if r['human'] %}
-                        <td>{{r['modelname']}}</td>
+                        {% endif %} {% if r.human%}
+                        <td>{{r.modelname}}</td>
                         {% else %}
-                        <td><a class="plain-link" href="{{ r['paper_url'] }}" target="_blank">{{r['modelname']}}</a>
+                        <td><a class="plain-link" href="{{ r.paper_url}}" target="_blank">{{r.modelname}}</a>
                         </td>
                         {% endif %}
-                        <td>{{ r['ap'] }}</td>
-                        <td>{{ r['ap50'] }}</td>
-                        <td>{{ r['ap75'] }}</td>
-                        <td>{{ r['aps'] }}</td>
-                        <td>{{ r['apm'] }}</td>
-                        <td>{{ r['apl'] }}</td>
-                        <td>{{ r['timestamp'] }}</td>
+                        <td>{{ r.ap}}</td>
+                        <td>{{ r.ap50}}</td>
+                        <td>{{ r.ap75}}</td>
+                        <td>{{ r.aps}}</td>
+                        <td>{{ r.apm}}</td>
+                        <td>{{ r.apl}}</td>
+                        <td>{{ r.timestamp}}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
-
-
+            {% endif %}
+            <a href="javascript:;">+Create a new tracker</a>
 
         </div>
     </section>
@@ -196,5 +185,3 @@
 
     </footer>
 </body>
-
-</html>

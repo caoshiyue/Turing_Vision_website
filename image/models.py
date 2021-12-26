@@ -88,15 +88,12 @@ def clean_file_name(filename: str):
     return re.sub(invalid_chars, replace_char, filename)
 
 
-def do_save_anno(data):
-    usr = data['usr']
+def do_save_anno(data, usr):
     usr = clean_file_name(usr)
     usr_file = os.path.join(save_path, usr)
-    del data['usr']
     if not os.path.exists(usr_file):
         os.mkdir(usr_file)
-    else:
-        l = len(os.listdir(usr_file))
-        json_file = os.path.join(usr_file, usr)+str(l)+'.json'
-        with open(json_file, "w+") as f:
-            json.dump(data, f)
+    l = len(os.listdir(usr_file))
+    json_file = os.path.join(usr_file, usr)+str(l)+'.json'
+    with open(json_file, "w+") as f:
+        json.dump(data, f)

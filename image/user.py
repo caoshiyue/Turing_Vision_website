@@ -2,7 +2,7 @@
 # Author:
 # Description:
 # LastEditors: Shiyuec
-# LastEditTime: 2021-12-17 22:08:17
+# LastEditTime: 2021-12-25 20:26:27
 ##
 from django.db import models
 # Create your models here.
@@ -13,6 +13,8 @@ from django.core.mail import send_mass_mail
 from django.conf import settings as settings
 from django.core.mail import EmailMultiAlternatives
 import hashlib
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 
 
 class AlembicVersion(models.Model):
@@ -51,26 +53,27 @@ class Submissions(models.Model):
         unique=True, blank=True, null=True, max_length=128)
     hardware = models.CharField(blank=True, null=True, max_length=32)
     timestamp = models.DateTimeField(blank=True, null=True)
-    user = models.ForeignKey('Users', models.DO_NOTHING, blank=True, null=True)
+    user = models.ForeignKey(
+        User, models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'submissions'
 
 
-class Users(models.Model):
-    id = models.AutoField(primary_key=True)
-    email = models.CharField(unique=True, blank=True, null=True, max_length=64)
-    username = models.CharField(
-        unique=True, blank=True, null=True, max_length=64)
-    password_hash = models.CharField(blank=True, null=True, max_length=128)
-    confirmed = models.BooleanField(blank=True, null=True)
-    registration_time = models.DateTimeField(blank=True, null=True)
-    last_seen = models.DateTimeField(blank=True, null=True)
+# class Users(models.Model):
+#     id = models.AutoField(primary_key=True)
+#     email = models.CharField(unique=True, blank=True, null=True, max_length=64)
+#     username = models.CharField(
+#         unique=True, blank=True, null=True, max_length=64)
+#     password_hash = models.CharField(blank=True, null=True, max_length=128)
+#     confirmed = models.BooleanField(blank=True, null=True)
+#     registration_time = models.DateTimeField(blank=True, null=True)
+#     last_seen = models.DateTimeField(blank=True, null=True)
 
-    class Meta:
-        managed = False
-        db_table = 'users'
+#     class Meta:
+#         managed = False
+#         db_table = 'users'
 
 
 class login_form(forms.Form):
@@ -103,3 +106,14 @@ def send_email(usr, email):
 
     msg.attach_alternative(html_content, "text/html")
     msg.send()
+
+
+def authenticate_email(request, email, password):
+    try:
+        user = User.objects.get(email=email)
+        # 验证成功之后就会返回这个user对象
+        user = authenticate(
+            request, username=user.username, password=password)
+        return user
+    except:
+        return None

@@ -31,8 +31,11 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     path('download/', download, name='download'),
     path('login/', login, name='login'),
+    path('logout/', logout, name='logout'),
     path('register/', register, name='register'),
+    path('user_account/', user_account, name='user_account'),
     path('login_request/', login_request, name='login_request'),
+    url(r'^login/(?P<message>.*)/(?P<next>/.*)', login, name='login'),
     path('register_request/', register_request, name='register_request'),
 
     url(r'^next/', get),

@@ -60,6 +60,17 @@
                                                 </li>
                                                 <li><a href="http://turingai.ia.ac.cn/">人机对抗</a></li>
                                                 <li><a href="/contact">联系我们</a></li>
+                                                {% if request.user.is_authenticated %}
+                                                <li><a href="javascript:;">{{ request.user.username}}</a>
+                                                    <ul class="submenu">
+                                                        <li><a href="/user_account">个人页面</a></li>
+                                                        <li><a href="/logout">Logout</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                {% else %}
+                                                <li><a href="/login">登录</a></li>
+                                                {% endif %}
                                             </ul>
                                         </nav>
                                     </div>

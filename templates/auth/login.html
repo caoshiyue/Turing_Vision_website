@@ -123,11 +123,13 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <input class="form-control valid" name="password" id="password" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter password'" placeholder="Password">
+                                    <input class="form-control valid" name="next_url" id="next_url" type="hidden" value={{ next_url }}>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <p class="plain-text">
                                     <span style="color:red;">{{ message }}</span>
+
                                 </p>
                             </div>
                         </div>

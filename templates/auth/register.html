@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="/static/assets/img/icon/favicon.png">
     <script src="/static/image/md5.js"></script>
+    <script src="/static/image/jquery.min.js"></script>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
@@ -155,7 +156,7 @@
                             </div>
                         </div>
                         <div class="form-group mt-3">
-                            <button type="submit" class="button button-contactForm boxed-btn">注册</button>
+                            <button type="button" class="button button-contactForm boxed-btn" onclick="register_request()">注册</button>
                         </div>
                     </form>
                     <div class="col-sm-4">
@@ -189,6 +190,25 @@
                         pwd.value = md5(pwd.value); // 把密码变为MD5 32位
                         pwd_confirm.value = md5(pwd_confirm.value);
                         return true;
+                    }
+
+                    function register_request() {
+                        checkForm()
+                        $.ajax({
+                            //几个参数需要注意一下
+                            type: "POST", //方法类型
+                            url: "/register_request/", //url
+                            data: $('#contactForm').serialize(),
+                            success: function(result) {
+                                console.log(result); //打印服务端返回的数据(调试用)
+                                document.getElementById('message').innerHTML = result;
+                                document.getElementById('password').value = "";
+                                document.getElementById('password_confirm').value = "";
+                            },
+                            error: function() {
+                                alert("服务器异常！");
+                            }
+                        });
                     }
                 </script>
             </div>
